@@ -15,3 +15,4 @@ class Post(models.Model):
     edited = models.DateTimeField(timezone.now())
     published = models.IntegerField(choices=PUBLISHED_CHOICES)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
+

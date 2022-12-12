@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>{% block title %}{% endblock %}</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'blog/base.css' %}">
+  </head>
+  <body>
+    <nav class="red">
+      <!-- TODO: replace the text in the link with an image or something like that (svg would be best.)-->
+      <a href="/">front page</a>
+    </nav>
+    {% block content %}{% endblock %}
+    <footer>
+      <!-- TODO: add something to the footer -->
+    </footer>
+  </body>
+</html>

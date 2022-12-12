@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}main page.{% endblock %}
+{% block content %}
+<section>
+  <h1>Krzysztof Lisowski's blog</h1>
+  <span>welcome to my blog page</span>
+  <hr>
+  <ul>
+    <!-- TODO: insert post links here. -->
+    {% for post in posts %}
+    <li><a href="/post/{{post.id}}">{{post.title}}</a></li> 
+    {% endfor %}
+  </ul>
+</section>
+{% endblock %}
