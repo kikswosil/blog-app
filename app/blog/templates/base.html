@@ -6,11 +6,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{% static 'blog/base.css' %}">
+    {% block styles %}{% endblock %}
   </head>
   <body>
-    <nav class="red">
+    <nav class="nav">
       <!-- TODO: replace the text in the link with an image or something like that (svg would be best.)-->
-      <a href="/">front page</a>
+      <!-- <a href="/">front page</a> -->
+      <a href="/"><img src="{% static 'svg/home.svg' %}" alt="home"></a>
     </nav>
     {% block content %}{% endblock %}
     <footer>

@@ -1,14 +1,27 @@
 {% extends 'base.html' %}
+{% load static %}
+
 {% block title %}main page.{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'blog/main.css' %}">
+{% endblock %}
+
 {% block content %}
-<section>
-  <h1>Krzysztof Lisowski's blog</h1>
-  <span>welcome to my blog page</span>
-  <hr>
-  <ul>
-    <!-- TODO: insert post links here. -->
+<section class="container">
+  <div class="top-section">
+    <h1>Krzysztof Lisowski's blog</h1>
+    <span>welcome to my blog page</span>
+  </div>
+  <ul class="posts">
     {% for post in posts %}
-    <li><a href="/post/{{post.id}}">{{post.title}}</a></li> 
+    <li>
+      <a href="/post/{{post.id}}">
+        <h1>{{post.title}}</h1>
+        <small>{{post.author}}</small>
+        <small>{% firstof post.edited post.published %}</small>
+      </a>
+    </li> 
     {% endfor %}
   </ul>
 </section>
