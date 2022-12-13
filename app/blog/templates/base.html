@@ -10,9 +10,14 @@
   </head>
   <body>
     <nav class="nav">
-      <!-- TODO: replace the text in the link with an image or something like that (svg would be best.)-->
-      <!-- <a href="/">front page</a> -->
       <a href="/"><img src="{% static 'svg/home.svg' %}" alt="home"></a>
+      <div class="searchbar">
+        <form method="get" action="/search/">
+          <input type="text" name="query" />
+          <!-- TODO: replace the serach with an icon. -->
+          <button type="submit">search</button>
+        </form>
+      </div>
     </nav>
     {% block content %}{% endblock %}
     <footer>

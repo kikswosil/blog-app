@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}search results{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'blog/search.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="container">
+  <div class="top-section">
+   <h1>search results</h1>
+   <small>search results for: {{query}}</small>   
+  </div>
+ <ul class="posts">
+   {% for post in posts %}
+   <li>
+     <a href="/post/{{post.id}}">
+       <h1>{{post.title}}</h1>
+       <small>{{post.author}}</small>
+       <small>{% firstof post.edited post.published %}</small>
+     </a>
+   </li> 
+   {% empty %}
+   <p>none found</p>
+   {% endfor %}
+ </ul>
+</section>
+{% endblock %}

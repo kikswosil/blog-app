@@ -1,6 +1,10 @@
 # Django Blog app
-a blog app written in Django.
+A blog app written in Django.
 ## install  
-information about installation will be provided when the app is dockerized.
+to install clone the app,\
+then open terminal in the directory the app was cloned to and run\
+run `docker build . -t <image name>`
 ## run
-read install again.
+To run the app run `docker run -d -p 8000:8000`,\
+the `-d` flag is optional and will make the container\
+run in the background\

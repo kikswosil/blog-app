@@ -1,7 +1,7 @@
-/.vscode
-/blog-env
+.vscode/
+venv/
 *.sqlite3
 *.db
 *.pyc
-/__pychache__
+*.log
 __pycache__/

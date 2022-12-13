@@ -1,7 +1,15 @@
 {% extends 'base.html' %}
+{% load static %}
+
 {% block title %}{{ post.title }}{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'blog/post.css' %}">  
+{% endblock %}
+
 {% block content %}
-<section>
+<section class="container">
+  <div class="content header">
  <h1>{{ post.title }}</h1> 
  <div>
   <small>{{ post.slug }}</small>
@@ -11,7 +19,8 @@
  </div>
  <div>
    <small>published: {% firstof post.edited post.created %}</small>
- </div>
- <p>{{ post.content }}</p>
+ </div>   
+  </div>
+ <div class="content">{{ post.content | safe }}</div>
 </section>
 {% endblock %}

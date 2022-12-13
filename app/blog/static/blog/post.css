@@ -1,0 +1,24 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80vw;
+}
+
+.header{
+  margin-top: 10px !important;
+  margin-bottom: 20px !important;
+  padding-bottom: 30px !important;
+  border-bottom: 1px solid black;
+}
+
+.content{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  margin-top: 20px;
+  font-size: 18px;
+}
