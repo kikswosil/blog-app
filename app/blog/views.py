@@ -1,4 +1,5 @@
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
+from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.models import User
 from .models import Post
 
@@ -24,22 +25,30 @@ def search(request):
         
     return render(request, 'search.html', {'query': query, 'posts': result_list})
 
+def login(request):
+    return render(request, 'login.html', {})
+
+def sign_up(request):
+    return render(request, 'signup.html', {})
+
+# FIXME: replace this with csrf_token validation.
+@csrf_exempt
 def edit(request):
     post = Post()
     users = User.objects.all()
     options = [
         {
-            'name': 'PUBLISHED',
+            'name': 'publihed',
             'vlaue': PUBLISHED
         },
         {
-            'name': 'DRAFT',
+            'name': 'draft',
             'value': DRAFT
         }
     ]
     if request.method == 'POST':
-        # handle poset insert.
-        return;
+        # handle post insert.
+        return redirect('/');
     return render(request, 'edit.html', {'post': post, 'users': users, 'options': options})
 
 

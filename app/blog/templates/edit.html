@@ -8,25 +8,37 @@
 {% endblock %}
 
 {% block content %}
- <section>
+ <section class="container">
   <h1>Post editor</h1>
-  <form action="/", method="POST">
+  <form action="/", method="POST" class="form">
+    {% csrf_token %}
+    <label for="title">title: </label>
     <input type="text" name="title" value="{{post.title}}" />
+    <label for="content">content: </label>
     <textarea rows="20" cols="100" name="content">{{post.content}}</textarea>
-    <select>
+    <div class="lists">
+      <div class="list">
+      <label for="status">status: </label>
+     <select name="status">
       {% for option in options %}
       <option value="{{option.value}}">{{option.name}}</option> 
       {% empty %}
       <option value="">---</option>
       {% endfor %}
-    </select>
-    <select>
+    </select>  
+      </div>
+     <div class="list">
+     <label for="author">author: </label>
+    <select name="author">
       {% for author in users %}
-      <option value="{{author.value}}">{{author.name}}</option>
+      <option value="{{author.pk}}">{{author.username}}</option>
       {% empty %}
       <option value="">---</option>
       {% endfor %}
     </select>
+ 
+     </div>
+      </div>
     <button type="submit">submit</button>
   </form>
  </section>
