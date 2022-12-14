@@ -1,5 +1,4 @@
 from django.shortcuts import get_object_or_404, render, redirect
-from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.models import User
 from .models import Post
 
@@ -31,15 +30,13 @@ def login(request):
 def sign_up(request):
     return render(request, 'signup.html', {})
 
-# FIXME: replace this with csrf_token validation.
-@csrf_exempt
 def edit(request):
     post = Post()
     users = User.objects.all()
     options = [
         {
             'name': 'publihed',
-            'vlaue': PUBLISHED
+            'value': PUBLISHED
         },
         {
             'name': 'draft',
@@ -47,7 +44,28 @@ def edit(request):
         }
     ]
     if request.method == 'POST':
-        # handle post insert.
+        # # handle post insert.
+        data = request.POST;
+        post = Post(
+                title = data['title'],
+                slug = data['slug'],
+                content = data['content'],
+                published = data['published'],
+                author = User.objects.get(pk=data['author'])
+        )
+        post.save()
+        # post.title = data['title']
+        # post.slug = data['slug']
+        # post.content = data['content']
+        # post.published = data['published']
+        # post.author = User.objects.get_object_or_404(pk=data['author'])
+        # Post.objects.create( #type: ignore
+        #         title = data['title'],
+        #         slug = data['slug'],
+        #         content = data['content'],
+        #         publihed = data['publihed'],
+        #         author = User.objects.get_object_or_404(pk=data['author'])
+        # )
         return redirect('/');
     return render(request, 'edit.html', {'post': post, 'users': users, 'options': options})
 
