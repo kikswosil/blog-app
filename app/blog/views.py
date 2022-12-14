@@ -14,7 +14,7 @@ def post(request, post_id):
 
 def search(request):
     query = request.GET.get('query')
-    # posts = Post.objects.filter(body_text__search=query, published=PUBLISHED) #type: ignore
+
     posts = Post.objects.all() #type: ignore
     result_list = []
     for post in posts:

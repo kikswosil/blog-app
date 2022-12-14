@@ -24,6 +24,22 @@ body {
   margin: 15px;
 }
 
+.nav input {
+  border: none;
+  border-bottom: 1px solid blue;
+  height: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.nav button {
+  height: 100%;
+}
+
+.nav button img{
+  height: 30px;
+}
+
 footer{
   position: absolute;
   bottom: 0;

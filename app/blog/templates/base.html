@@ -10,12 +10,12 @@
   </head>
   <body>
     <nav class="nav">
-      <a href="/"><img src="{% static 'svg/home.svg' %}" alt="home"></a>
+      <a href="/"><img src="{% static 'svg/home.svg' %}" alt="home" /></a>
       <div class="searchbar">
         <form method="get" action="/search/">
           <input type="text" name="query" />
           <!-- TODO: replace the serach with an icon. -->
-          <button type="submit">search</button>
+          <button type="submit"><img src="{% static 'svg/search.svg' %}" alt="search" /></button>
         </form>
       </div>
     </nav>
