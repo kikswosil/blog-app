@@ -1,6 +1,7 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout #type: ignore
+from django.contrib.auth.decorators import login_required, permission_required
 from .models import Post
 
 PUBLISHED = 1
@@ -51,6 +52,8 @@ def sign_up(request):
         return redirect('/login/')
     return render(request, 'signup.html', {})
 
+@login_required(login_url='/login/')
+@permission_required('blog.add_post', login_url='/login/')
 def edit(request):
     post = Post()
     users = User.objects.all()
@@ -64,7 +67,6 @@ def edit(request):
             'value': DRAFT
         }
     ]
-    # TODO: add auth when it's ready
     if request.method == 'POST':
         data = request.POST;
         post = Post(
