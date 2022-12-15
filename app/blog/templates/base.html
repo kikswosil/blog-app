@@ -19,11 +19,11 @@
         </form>
       </div>
       {% if not user.is_authenticated %}
-      <a href="/login/">login</a>
-      <a href="/signup/">sign up</a>
+      <a href="/login/" class="button">login</a>
+      <a href="/signup/" class="button">sign up</a>
       {% else %}
       hello {{ user.get_username }}
-      <a href="/logout/">logout</a>
+      <a href="/logout/" class="button">logout</a>
       {% endif %}
        
     </nav>

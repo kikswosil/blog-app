@@ -11,6 +11,14 @@ body {
   align-items: center;
 }
 
+.button{
+  background-color: blue;
+  border-radius: 5px;
+  text-decoration: none;
+  color: white;
+  padding: 10px;
+}
+
 .nav{
   width: 100vw;
   height: 50px;
