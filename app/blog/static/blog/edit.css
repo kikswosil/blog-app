@@ -12,7 +12,7 @@
   flex-direction: column;
 }
 
-.form button {
+.form button[type="submit"] {
   width: 25%;
 }
 
@@ -28,4 +28,24 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+}
+
+
+
+#buttons-container{
+  width: 100%;
+  display: none;
+}
+
+#buttons-container button {
+  width: 24%;
+  border: none;
+  margin-top: 10px;
+  margin-bottom: 10px
+}
+
+.visible-flex {
+  display: flex !important;
+  flex-direction: row;
+  justify-content: space-between;
 }
