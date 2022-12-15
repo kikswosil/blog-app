@@ -25,9 +25,15 @@ def search(request):
     return render(request, 'search.html', {'query': query, 'posts': result_list})
 
 def login(request):
+    if request.method == 'POST':
+        # handle login logic
+        return redirect('/')
     return render(request, 'login.html', {})
 
 def sign_up(request):
+    if request.method == 'POST':
+        # handle sign up logic
+        return redirect('/')
     return render(request, 'signup.html', {})
 
 def edit(request):
@@ -43,8 +49,8 @@ def edit(request):
             'value': DRAFT
         }
     ]
+    # TODO: add auth when it's ready
     if request.method == 'POST':
-        # # handle post insert.
         data = request.POST;
         post = Post(
                 title = data['title'],
@@ -54,19 +60,7 @@ def edit(request):
                 author = User.objects.get(pk=data['author'])
         )
         post.save()
-        # post.title = data['title']
-        # post.slug = data['slug']
-        # post.content = data['content']
-        # post.published = data['published']
-        # post.author = User.objects.get_object_or_404(pk=data['author'])
-        # Post.objects.create( #type: ignore
-        #         title = data['title'],
-        #         slug = data['slug'],
-        #         content = data['content'],
-        #         publihed = data['publihed'],
-        #         author = User.objects.get_object_or_404(pk=data['author'])
-        # )
-        return redirect('/');
+        return redirect('/')
     return render(request, 'edit.html', {'post': post, 'users': users, 'options': options})
 
 
