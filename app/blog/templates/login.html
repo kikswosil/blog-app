@@ -8,8 +8,9 @@
 {% endblock %}
 
 {% block content %}
-  <section>
-    <form action="/login/" method="POST">
+  <section class="container">
+    <h1>login</h1>
+    <form action="/login/" method="POST" class="form">
       {% csrf_token %}
       <label for="username">uername: </label>
       <input type="text" name="username" required />

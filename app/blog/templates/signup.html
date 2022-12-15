@@ -8,8 +8,9 @@
 {% endblock %}
 
 {% block content %}
-  <section>
-    <form action="/signup/" method="POST">
+  <section class="container">
+    <h1>sign up</h1>
+    <form action="/signup/" method="POST" class="form">
       {% csrf_token %}  
       <label for="username">username: </label>
       <input type="text" name="username" required/>
@@ -19,7 +20,7 @@
       <input type="password" name="password" required/>
       <label for="password_confirmation">confirm password: </label>
       <input type="password" name="password_confirmation" required/>
-      <button type="submit">sign in</button>
+      <button type="submit">sign up</button>
     </form>
   </section>
 {% endblock %}
