@@ -24,6 +24,9 @@
       {% else %}
       hello {{ user.get_username }}
       <a href="/logout/" class="button">logout</a>
+        {% if perms.blog.add_post %}
+          <a href="/edit/" class="button">create a post</a> 
+        {% endif %}
       {% endif %}
        
     </nav>

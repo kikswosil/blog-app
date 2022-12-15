@@ -29,17 +29,6 @@
       {% endfor %}
     </select>  
       </div>
-     <div class="list">
-     <label for="author">author: </label>
-    <select name="author">
-      {% for author in users %}
-      <option value="{{author.pk}}">{{author.username}}</option>
-      {% empty %}
-      <option value="">---</option>
-      {% endfor %}
-    </select>
- 
-     </div>
       </div>
     <button type="submit">submit</button>
   </form>

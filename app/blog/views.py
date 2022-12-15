@@ -56,7 +56,6 @@ def sign_up(request):
 @permission_required('blog.add_post', login_url='/login/')
 def edit(request):
     post = Post()
-    users = User.objects.all()
     options = [
         {
             'name': 'publihed',
@@ -67,6 +66,7 @@ def edit(request):
             'value': DRAFT
         }
     ]
+    user_id = request.user.id
     if request.method == 'POST':
         data = request.POST;
         post = Post(
@@ -74,10 +74,10 @@ def edit(request):
                 slug = data['slug'],
                 content = data['content'],
                 published = data['published'],
-                author = User.objects.get(pk=data['author'])
+                author = User.objects.get(pk=user_id)
         )
         post.save()
         return redirect('/')
-    return render(request, 'edit.html', {'post': post, 'users': users, 'options': options})
+    return render(request, 'edit.html', {'post': post, 'options': options})
 
 
