@@ -1,5 +1,6 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login, logout #type: ignore
 from .models import Post
 
 PUBLISHED = 1
@@ -24,16 +25,30 @@ def search(request):
         
     return render(request, 'search.html', {'query': query, 'posts': result_list})
 
-def login(request):
+def log_in(request):
     if request.method == 'POST':
         # handle login logic
+        data = request.POST
+        user = authenticate(username = data['username'], password = data['password'])
+        if user is not None:
+            login(request, user) # type: ignore
         return redirect('/')
     return render(request, 'login.html', {})
 
+def log_out(request):
+    logout(request)
+    return redirect('/')
+
 def sign_up(request):
-    if request.method == 'POST':
+    if request.method == 'POST' and request.POST['password'] == request.POST['password_confirmation']:
         # handle sign up logic
-        return redirect('/')
+        data = request.POST
+        User.objects.create_user(data['username'], data['email'], data['password'])
+        user = authenticate(username = data['username'], password = data['password'])
+        if user is not None: 
+            login(request, user) #type: ignore
+            return redirect('/')
+        return redirect('/login/')
     return render(request, 'signup.html', {})
 
 def edit(request):
