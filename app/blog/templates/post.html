@@ -22,5 +22,10 @@
  </div>   
   </div>
  <div class="content">{{ post.content | safe }}</div>
+ <div class="comments">
+   {% for comment in comments %}
+   <span>{{comment.author.username}}: {{comment.text}}</span>
+   {% endfor %}
+ </div>
 </section>
 {% endblock %}
