@@ -2,7 +2,7 @@ from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout #type: ignore
 from django.contrib.auth.decorators import login_required, permission_required
-from .models import Post
+from .models import Post, Comment
 
 PUBLISHED = 1
 DRAFT = 0
@@ -13,7 +13,8 @@ def index(request):
 
 def post(request, post_id):
     post = get_object_or_404(Post, pk=post_id, published=PUBLISHED)
-    return render(request, 'post.html', {'post': post})
+    comments = Comment.objects.filter(post=post) #type: ignore
+    return render(request, 'post.html', {'post': post, 'comments': comments})
 
 def search(request):
     query = request.GET.get('query')
