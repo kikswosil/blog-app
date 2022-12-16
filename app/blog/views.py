@@ -16,6 +16,15 @@ def post(request, post_id):
     comments = Comment.objects.filter(post=post) #type: ignore
     return render(request, 'post.html', {'post': post, 'comments': comments})
 
+@login_required
+def comment(request, post_id):
+    if request.method == 'POST':
+        post = Post.objects.get(pk=post_id) #type: ignore
+        comment = Comment(text = request.POST['text'], post = post, author = request.user) 
+        comment.save()
+        return redirect(f'/post/{post_id}')
+    return redirect('/')
+
 def search(request):
     query = request.GET.get('query')
 
